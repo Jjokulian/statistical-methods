@@ -10,6 +10,62 @@ strength:
 Every one of them was written because a claim made without it turned out to be
 wrong — including claims made by this author, twice, twenty minutes apart.
 
+## The general form: no count without a decision about what one is
+
+Every count carries an assumption about what counts as **one**, and that assumption is
+invisible by the time the count is a number. This is the whole of it, and everything
+below is a special case.
+
+Point at a deck of cards and ask *how many?* — one deck, four suits, fifty-two cards,
+about 10²⁴ atoms. The question has no answer until somebody has said what a one is.
+Frege made this point about number and sortals; Quine's version is "no entity without
+identity". **The philosophical half is a century old and is not claimed here.**
+
+What is new is that the assumption can now be **tested** rather than merely noted. That
+is the only contribution this document makes: philosophy could say the individuation is
+there and unavoidable; it had no procedure for asking whether a *particular* one holds
+together. Feature-subspace stability is such a procedure.
+
+So the three questions to put to any number, in order:
+
+1. **What is the individuation?** What was treated as one thing?
+2. **Is it reasonable?** Does the rule suit what the number is being used for?
+3. **Is it stable?** — and this is the one that has an empirical answer. Does the same
+   grouping emerge when the entities are individuated by features that were not used
+   to define them?
+
+A number is where this hides best, because a number looks like the least model-laden
+object in a dataset. Its model is upstream, at counting time, and nothing in the digit
+records it.
+
+### It is not an exotic problem
+
+- **"Denmark has 123 marine water bodies."** That counts polygons, not waters.
+- **"1,527 monitoring stations."** That counts register entries — identity claims about
+  positions revisited for forty years through changed instruments and changed water.
+- **"About 11,000 bird species."** Under a phylogenetic rather than biological species
+  concept the count rises toward 18,000. The birds did not change. **A quantity that
+  moves by 60% when the sortal changes is not a measurement of birds.**
+- **GDP** counts transactions inside a boundary that excludes household labour.
+  **Unemployment** counts by a rule that excludes discouraged workers. **Deaths "with"
+  versus "from"** a disease is a sortal dispute conducted as an epidemiological one.
+- **This document's origin project enumerates "165 mechanisms in 17 groups."** Those
+  count our own decisions about where one mechanism ends. Nobody has tested that
+  partition either, and the project says so.
+
+### The practical demand
+
+Parallel to reporting an error bar on a measurement, and just as cheap:
+
+> **Report the count's sensitivity to the individuation rule.** Not the number — the
+> range the number takes across the reasonable rules. "11,000 to 18,000 species,
+> depending on the species concept" is an honest figure. "11,000" is not.
+
+Where the rules are few and named, this is arithmetic. Where they are not, the
+stability test estimates it: a count whose grouping survives independent halves of the
+feature space is one whose sortal is doing work, and a count whose grouping dissolves
+is a decision reported as an observation.
+
 ## The problem
 
 A categorical column is a model output wearing the clothes of an observation. Every
