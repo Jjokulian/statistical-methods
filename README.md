@@ -389,6 +389,28 @@ everywhere else here:
 6. **And at which level of organisation?** The entities are a basket too, and the
    level of maximal stability is a finding rather than an input.
 
+## Every number has an entry
+
+**[`docs/GLOSSARY.md`](docs/GLOSSARY.md)** defines every quantity this project
+computes — the formula, the line that computes it, its value under the null, and what
+it does not license. No number appears anywhere without an entry.
+
+That is not bookkeeping. A statistic is an individuation rule wearing a name, and the
+name is exactly what lets a quantity get spent on something its definition never
+supported — the same move the rest of this document is about, committed one level up.
+Writing the formula down is the cheapest available defence, and it caught a live error
+here on the first pass:
+
+> The statistic the scripts report as `icc` is the mean-square ratio
+> `MSB / (MSB + MSW)`, **not** the ANOVA intraclass correlation. Its numerator is not
+> mean-corrected, so under random labels both mean squares estimate the same variance
+> and the ratio tends to **0.5, not 0** — simulated at 0.4988. The scripts described 0
+> as "tells you nothing". Corrected in place.
+>
+> Published figures are **lifts** and **share-of-structure**, both differences, so
+> none of them moves. But the raw values were unreadable as written, and nobody would
+> have found that without writing the formula next to the code.
+
 ## Status and honesty
 
 The code here is extracted from a working audit, not from a textbook. Method 4 was
