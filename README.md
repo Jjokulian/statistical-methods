@@ -28,6 +28,45 @@ Every basket carries two things that are easy to conflate:
 "Is this a real category?" answers the first and is nearly always yes. The question
 with content is whether membership predicts what it is being used to predict.
 
+## Before any of it: the entities are a basket too
+
+Every method below takes a set of entities and asks whether a grouping over them is
+real. **The entities themselves are a categorical claim, and assuming them is the same
+error one level down.**
+
+A row in a table is an assertion that this is one thing, persisting, distinct from the
+next row. That assertion has a membership rule like any other, and the rules disagree:
+
+- **Organism.** Spatial contiguity, genetic identity, reproductive unity and metabolic
+  integration give different counts on the same matter. A lichen is one organism, or
+  two, or three. A siphonophore is an animal or a colony. *Pando* is one aspen or
+  47,000 trees. A human is a human, or a holobiont whose metabolism does not close
+  without ~38 trillion bacteria. Mitochondria were free-living; the boundary moved.
+- **A monitoring station.** An identity claim about a position visited for forty years.
+  The instrument changed, the operator changed, and the water is entirely different
+  water. It is one entity because a register gave it one number.
+- **A person over time**, a **firm through mergers**, a **household**, a **patient
+  episode**: each is a rule about persistence, and each was chosen.
+
+So the honest form of the question is not *which grouping of these entities is real*
+but:
+
+> **At which level of organisation does grouping become stable?**
+
+That is answerable with the same machinery, applied recursively. Run feature-subspace
+stability at several candidate levels — cells, individuals, colonies, holobionts;
+casts, stations, sites — and the level where agreement between independent feature
+halves is highest is where the entity boundary is doing real work. **The level of
+maximal stability is itself the finding**, and it need not be the level the data was
+recorded at.
+
+Which means the vocabulary matters. Not "boundaries between organisms" but *boundaries
+between stability-preserving units* — because the first phrase imports a model as
+though it were a given, which is what all of this exists to prevent.
+
+*This document did exactly that in an earlier draft, and so did the project applying
+it.*
+
 ## The methods, weakest to strongest
 
 ### 1. Variance decomposition — necessary, and circular alone
