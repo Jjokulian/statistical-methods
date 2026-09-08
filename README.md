@@ -68,6 +68,57 @@ for salinity, which diffusion makes it stable for) and is then spent in the othe
 (therefore measurements inside it are interchangeable — false, and unrelated to the
 first).
 
+### Where the two go in a Bayesian analysis
+
+The split is not just terminological. The two products enter at different points of an
+inference, and each fixes a specific thing that is currently done badly.
+
+**Entity-identity sets the prior's strength — not its mean.** A Beta(α, β) prior is
+read as pseudo-counts, and α + β is what the prior is *worth* in observations. When a
+basket is used as a prior for a new member — the usual, sensible move — the mean comes
+from pooling what is already in the basket, but the **concentration has no
+justification at all** unless the boundary has been tested. Identity-stability supplies
+exactly that missing number:
+
+> A basket of `n` members whose boundary reproduces at agreement `m` across disjoint
+> halves of the feature space is worth about **`m·n` pseudo-observations, not `n`**.
+
+At the best figure the origin project reached (m ≈ 0.46), a four-station basket is
+worth under two observations. At m ≈ 0 it is worth none, and the honest prior is the
+flat one. This is Laplace's rule of succession in structure — a correction for not
+having seen everything — with the correction estimated rather than set to +1/+2 by
+convention.
+
+**And it is the non-circular route to a quantity hierarchical models already need.**
+Partial pooling estimates a shrinkage weight from the group-level variance τ² — but
+from *the same responses being modelled*, which is the ICC circularity in Bayesian
+clothing. Feature-subspace stability estimates it from a disjoint half of the feature
+space that the target never touched. What a hierarchical prior smuggles in is
+**exchangeability within group**, and identity-stability is a direct measurement of it
+rather than an assumption about it.
+
+**Basket-utility is the likelihood, and lives in the updating.** Utility is defined
+against outcomes, per functional, so each functional the partition is tested on is an
+update to the partition's standing *for that functional* — never in general. The prior
+is target-blind by construction; the posterior is target-specific by construction; and
+they are estimated from disjoint information, which is what makes the update mean
+anything.
+
+Which gives the diagnostic the loop exists for. **When a posterior pulls hard against a
+strongly-concentrated prior, one of the two is wrong, and which one has a signature:**
+
+- **many functionals contradict the same partition** → the boundary is wrong. The
+  stability score was measuring reproducibility of an artifact shared across the
+  feature space (a common instrument, a common sampling geometry).
+- **one functional contradicts it, the others do not** → the boundary is fine and the
+  functional does not live on it. Fjord boundaries are stable and predict salinity;
+  fluorescence is not a thing fjord boundaries are about.
+
+**The limit, stated.** The Beta reading is exact when the functional is a proportion.
+For a continuous functional the same role is played by the normal-normal shrinkage
+weight, and `m·n` becomes a scaling of the prior precision rather than of a count. The
+structure carries; the conjugacy does not.
+
 ### It is not an exotic problem
 
 - **"Denmark has 123 marine water bodies."** That counts polygons, not waters.
