@@ -1,42 +1,72 @@
 # Statistical methods for testing categories
 
-Four related tests, developed while auditing Danish marine monitoring and extracted
-here because none of them is about Denmark. They answer one question in increasing
-strength:
+## Root directive
 
-> **Is this category a property of the things in it, or of the instrument that
-> measured them and the person who drew the line?**
+> **Nothing is given.** Every number presupposes a rule for what counts as *one*.
+> Every category presupposes a rule for what its members *share*. Neither rule is in
+> the data, and neither is usually stated. **Both are testable by the same operation:
+> resample the space and see whether the boundary survives.**
 
-Every one of them was written because a claim made without it turned out to be
-wrong — including claims made by this author, twice, twenty minutes apart.
+Everything below is that one operation, applied at different levels. The methods were
+developed while auditing Danish marine monitoring and extracted here because none of
+them is about Denmark. Each was written because a claim made without it turned out to
+be wrong — including claims made by this author, twice, twenty minutes apart.
 
-## The general form: no count without a decision about what one is
+### What is old, and what is not
 
-Every count carries an assumption about what counts as **one**, and that assumption is
-invisible by the time the count is a number. This is the whole of it, and everything
-below is a special case.
+The observation that counting needs a decision is a century old and is **not claimed
+here**. Point at a deck of cards and ask *how many?* — one deck, four suits, fifty-two
+cards, about 10²⁴ atoms. There is no answer until somebody has said what a one is.
+Frege made this about number and sortals; Quine's slogan is *no entity without
+identity*.
 
-Point at a deck of cards and ask *how many?* — one deck, four suits, fifty-two cards,
-about 10²⁴ atoms. The question has no answer until somebody has said what a one is.
-Frege made this point about number and sortals; Quine's version is "no entity without
-identity". **The philosophical half is a century old and is not claimed here.**
+**But Quine's version runs the wrong way for our purpose.** There, identity is a
+**precondition** — a licence you must already hold before you may quantify at all,
+supplied by the language, and not itself an empirical matter. Our version makes it an
+**output**:
 
-What is new is that the assumption can now be **tested** rather than merely noted. That
-is the only contribution this document makes: philosophy could say the individuation is
-there and unavoidable; it had no procedure for asking whether a *particular* one holds
-together. Feature-subspace stability is such a procedure.
+> **not** *no entity without identity* — but ***a stable boundary is what an entity
+> is***.
 
-So the three questions to put to any number, in order:
+Identity is not assumed and then used; it is produced, by measurement, in degrees.
+The question stops being *is this a thing* (unanswerable, and always answered by
+convention) and becomes *how stable is this boundary, and under what*. That has a
+number.
 
-1. **What is the individuation?** What was treated as one thing?
-2. **Is it reasonable?** Does the rule suit what the number is being used for?
-3. **Is it stable?** — and this is the one that has an empirical answer. Does the same
-   grouping emerge when the entities are individuated by features that were not used
-   to define them?
+### Two stabilities, two products
 
-A number is where this hides best, because a number looks like the least model-laden
-object in a dataset. Its model is upstream, at counting time, and nothing in the digit
-records it.
+The same resampling operation yields two entirely different things depending on **what
+is varied**, and conflating them is the error this whole document exists to prevent:
+
+| Vary | Hold fixed | Stability yields | Reading |
+|---|---|---|---|
+| the **metric space** — disjoint halves of the feature space | the target | **entity-identity** | structural: *is there a thing here at all* |
+| the **functional of relevance** — the quantities the category is used to predict | the features | **basket-utility** | operational: *is this category good for anything* |
+
+**Entity-identity is a stability coefficient, not a verdict.** A boundary that persists
+across independently drawn metric spaces is an entity to that degree; one that appears
+only in the space that defined it is a drawing. So entities come in strengths, and the
+right report is the coefficient, not the noun.
+
+**Basket-utility is per-functional and never transfers.** A basket is not useful; it is
+useful *for* something, and the answer changes with the something. In the origin
+project the same 123 official water bodies carried real signal for surface oxygen
+saturation (+0.402 over a size-and-shape-matched null) and **negative** signal for
+fluorescence (−0.050). One partition, one dataset, one month: useful and useless at
+once, depending only on the functional asked.
+
+The two are independent, and the cross terms are where the damage is:
+
+|  | **identity-stable** | **identity-unstable** |
+|---|---|---|
+| **useful for the functional** | a real thing that also predicts — the only case that licenses the usual language | predicts your one target and dissolves under any other metric space: **a fit to your purpose, not a thing.** The most dangerous cell, because it validates |
+| **useless for the functional** | a real thing, wrong tool — say so and pick another partition | a drawing, used as a fact |
+
+The bait-and-switch that motivated all of this lives in the top-right cell: a boundary
+earns its name from one sense (a fjord *is* an enclosure — true, and identity-stable
+for salinity, which diffusion makes it stable for) and is then spent in the other
+(therefore measurements inside it are interchangeable — false, and unrelated to the
+first).
 
 ### It is not an exotic problem
 
@@ -57,14 +87,16 @@ records it.
 
 Parallel to reporting an error bar on a measurement, and just as cheap:
 
-> **Report the count's sensitivity to the individuation rule.** Not the number — the
-> range the number takes across the reasonable rules. "11,000 to 18,000 species,
-> depending on the species concept" is an honest figure. "11,000" is not.
+> **Report the count's sensitivity to the individuation rule** — not the number, but
+> the range it takes across the reasonable rules. "11,000 to 18,000 species, depending
+> on the species concept" is an honest figure. "11,000" is not.
+>
+> **And report utility per functional, never in general.** "This partition explains X
+> for oxygen and nothing for fluorescence" is a result. "This partition is meaningful"
+> is not a claim about anything.
 
-Where the rules are few and named, this is arithmetic. Where they are not, the
-stability test estimates it: a count whose grouping survives independent halves of the
-feature space is one whose sortal is doing work, and a count whose grouping dissolves
-is a decision reported as an observation.
+Where the rules are few and named, the first is arithmetic. Where they are not, the
+stability test estimates it.
 
 ## The problem
 
@@ -108,6 +140,9 @@ So the honest form of the question is not *which grouping of these entities is r
 but:
 
 > **At which level of organisation does grouping become stable?**
+
+which is the root directive applied one level down: the entity boundary is the first
+basket, and it is scored on the same **entity-identity** axis as any other.
 
 That is answerable with the same machinery, applied recursively. Run feature-subspace
 stability at several candidate levels — cells, individuals, colonies, holobionts;
@@ -183,6 +218,12 @@ Assumes no partition at all:
 > Cluster the entities from a **random subset** of the features.
 > Cluster again from a **disjoint** subset.
 > Measure agreement (adjusted Rand index). Does it **rise** as subsets grow?
+
+This is the **entity-identity** axis of the root directive: the metric space varies and
+the boundary either survives it or does not. Run the same operation over disjoint sets
+of *targets* instead of features and it measures **basket-utility** — whether the
+grouping that predicts one functional is the grouping that predicts the others, or
+whether each functional wants its own baskets.
 
 A grouping that appears only when one measurement is included is an artifact of that
 measurement. A grouping that appears whichever features are drawn is a property of the
@@ -264,6 +305,12 @@ everywhere else here:
 3. **What is the lift over a same-shaped null?** Not the raw statistic — it took the
    category as an input and cannot testify about it.
 4. **Does the grouping survive being derived from features it was not built on?**
+   (entity-identity)
+5. **For which functional?** — asked separately for each, never once and generalised
+   (basket-utility). A partition that answers 3 and 4 has still not been shown to be
+   the right partition for *your* target.
+6. **And at which level of organisation?** The entities are a basket too, and the
+   level of maximal stability is a finding rather than an input.
 
 ## Status and honesty
 
