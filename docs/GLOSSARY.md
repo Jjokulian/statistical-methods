@@ -113,11 +113,30 @@ $$\mathrm{ARI} \;=\; \frac{\displaystyle\sum_{ij}\binom{n_{ij}}{2} \;-\; \frac{\
 **Null value:** $0$ (this one *is* chance-corrected). **Max:** $1$. Negative values
 occur and mean the two partitions agree less than chance.
 
-> **The granularity trap.** ARI is depressed by a mismatch in group *count* alone,
-> independently of whether the partitions describe the same structure. Comparing 84
-> official groups against 12 derived ones is therefore not a comparison, and a low
-> score from such a pairing must not be reported. This is why
-> `partition_stability.py` takes the group count as an argument.
+> ### The granularity ceiling
+>
+> The null model holds **only the two group-size vectors** fixed. Two things follow,
+> and both bit this project.
+>
+> **(a) The maximum is not 1 when the margins differ.** $I$ can never exceed
+> $\min(P_A,P_B)$, while the denominator uses their mean, so
+>
+> $$\mathrm{ARI}_{\max} = \frac{\min(P_A,P_B) - \mathbb{E}[I]}{\tfrac12(P_A+P_B) - \mathbb{E}[I]}$$
+>
+> | comparison | $P_A$ | $P_B$ | $\mathbb{E}[I]$ | $\mathrm{ARI}_{\max}$ |
+> |---|---|---|---|---|
+> | 12 groups vs 84, $n=150$ | 864 | 66 | 5.10 | **0.132** |
+> | 84 vs 84 | 66 | 66 | 0.39 | 1.000 |
+>
+> An observed 0.117 at 12-vs-84 is therefore **88% of the achievable maximum**, not a
+> near-zero. Always compute the ceiling before reading a cross-granularity ARI, or
+> match the granularities — which is why `partition_stability.py` takes the group
+> count as an argument.
+>
+> **(b) Chance is only chance for *arbitrary* partitions.** Nothing but the sizes is
+> held fixed, so any structural constraint the compared partitions actually obey is
+> outside the null. Two contiguity-constrained partitions score **0.337** with no
+> shared information at all. See §10.
 
 **Does not license:** reading a low ARI as disagreement without first showing that
 the granularities match and that derived-vs-derived agreement survives at that
@@ -180,8 +199,14 @@ defined only where $0 < m < 1$ and $0 < v < m(1-m)$; otherwise reported as `null
 `methods/partition_stability.py`, `beta_fit()`.
 
 **$\kappa = \alpha+\beta$ is how well $m$ itself is pinned down across draws.** It is
-*not* the pooling licence, and it is not monotone in $k$: at $k=4$ out of 9 variables
-few disjoint splits exist, so draws share composition and $\kappa$ falls.
+*not* the pooling licence, and it is not monotone in $k$.
+
+*Corrected:* an earlier version explained the dip at $k=4$ by saying few disjoint
+splits exist there. That is wrong — there are $\binom{9}{4}\binom{5}{4}/2 = 315$
+disjoint 4–4 pairs, against only 36 at $k=1$. The real reason is **overlap between
+draws**: two random $k$-subsets of $V$ variables share $k^{2}/V$ on average, so at
+$k{=}4,V{=}9$ successive draws share 1.8 variables against 0.11 at $k{=}1$. The draws
+stop being independent, and $\kappa$ — which assumes they are — falls.
 
 **Why draws are floored rather than rescaled.** ARI runs below zero and the Beta
 support does not. A negative and a zero agreement both mean the boundary carries
@@ -225,6 +250,59 @@ $$R_{\text{new}} \;=\; R_{\text{old}} - P .$$
 
 **Does not license:** anything about the *current* residual. The test is over the
 sequence of published versions, and is archival rather than statistical.
+
+---
+
+## 9. Neighbour graph and the contiguity constraint
+
+A basket is **contiguous** when you can walk between any two of its stations, stepping
+only on stations in the basket and only between graph neighbours. Enforced by
+construction: clusters begin as singletons and merge only with an *adjacent* cluster,
+so connectedness holds by induction (`methods/partition_contiguous.py`,
+`agglomerate_contiguous()`).
+
+Two graphs, because adjacency is a modelling decision and this document may not
+pretend otherwise:
+
+$$E_{\text{knn}} = \{(i,j) : j \in \mathrm{NN}_k(i) \ \lor\ i \in \mathrm{NN}_k(j)\}, \quad k=6$$
+
+$$E_{\text{water}} = \{(i,j) \in E_{\text{knn}} : \overline{ij} \cap \text{coastline} = \emptyset\}$$
+
+$E_{\text{water}}$ reads *reachable in a straight line without touching land*. Its
+coastline is OSM, **not** the water-body polygons, which would reimport the assumption
+under test. Distance is equirectangular, adequate at Danish latitudes.
+
+**Degeneracy to guard.** Agglomeration from $n$ singletons to $k$ groups performs
+$n-k$ merges, so $k \ge n$ performs none and every partition is all-singletons with
+$\mathrm{ARI} = 0.000$ exactly. A first run asked for 84 groups over 25 stations and
+produced a full table of zeros that read as a finding.
+
+**Does not license:** treating either graph as observation. $k$ and the coastline
+extent are both choices, and $k$ changes the answer.
+
+---
+
+## 10. Contiguous null and contiguity lift
+
+$$\mathrm{ARI}_{0} = \underset{a<b}{\mathrm{mean}}\ \mathrm{ARI}(N_a, N_b), \qquad \mathrm{lift}_{\text{contig}} = m - \mathrm{ARI}_{0}$$
+
+where each $N_a$ is a random **connected** partition of matched size distribution,
+grown by breadth-first accretion from a random seed on the same graph
+(`contiguous_null()`).
+
+> **Why raw ARI is unreadable under this constraint.** ARI is chance-corrected against
+> *arbitrary* partitions. Two contiguity-constrained partitions of the same points
+> agree far above that, for no reason but both being connected blobs of similar size.
+> Measured here: $\mathrm{ARI}_{0} = 0.337$ on the national graph — **half** of an
+> observed 0.692 is contiguity alone. Report $\mathrm{lift}_{\text{contig}}$, never $m$.
+
+The same structure as the compact null of §2 and the 0.5 offset of §1: a statistic
+whose nominal null is not its null under the constraint actually imposed. Three
+instances in one project is the argument for computing the null rather than quoting
+it.
+
+**Does not license:** comparison of lifts across graphs or group counts. $\mathrm{ARI}_0$
+changes with both — it is 0.337 at 150 stations and 0.048 at 25.
 
 ---
 

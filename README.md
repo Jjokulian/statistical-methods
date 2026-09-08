@@ -124,10 +124,37 @@ exists to make people report:
   and at one feature per half they match it exactly. `m = 0.436` puts a 1.79-station
   body at **0.78 pseudo-observations**, not 0.21.
 
-  **This is evidence for the drawn boundaries**, and it is the opposite of what the
-  audit expected to find. It exists only because the confounded number was refused:
-  0.21 would have been quoted, would have been wrong by a factor of four, and would
-  have been wrong in the direction the author was already inclined to believe.
+  Refusing the confounded number was right, and for a stronger reason than was given
+  at the time. **ARI cannot reach 1 when the two partitions have different group
+  counts**, because the attainable maximum is $\min(P_A,P_B)$ while the denominator
+  uses their mean (§3 of the glossary). At 12 groups against 84 the ceiling is
+  **0.132** — so the observed 0.117 was **88% of the maximum that comparison could
+  produce**. Not weak evidence against the boundaries; near-ceiling agreement,
+  misread as near-floor because 0.132 looks like 0 when you are expecting 1.
+
+  **But the matched-granularity result does not survive either, and it fails in the
+  other direction.** Both partitions were still being compared on unequal terms: the
+  official water bodies are *contiguous by construction* and the derivations were
+  free to interleave. Constrain the derivations to be connected too, and subtract
+  what two random **connected** partitions of matched sizes already agree on
+  (ARI 0.337 — half of any raw figure here):
+
+  | features per half | derived-vs-derived lift | derived-vs-official lift |
+  |---|---|---|
+  | 1 | +0.002 | −0.005 |
+  | 2 | +0.161 | +0.018 |
+  | 3 | +0.277 | +0.019 |
+  | 4 | **+0.355** | **−0.002** |
+
+  The derivations converge strongly on something the measurements share. **The
+  official partition adds nothing detectable beyond being a connected map of that
+  size distribution.** Its earlier 0.436 was real against a null of arbitrary
+  partitions, and is fully accounted for by contiguity against the null that holds
+  shape constant.
+
+  So the honest statement is not "evidence for the drawn boundaries" — that claim was
+  published here and is withdrawn — but: **the data contain reproducible structure,
+  and the drawn boundaries are not where it is.**
 
 **And it is the non-circular route to a quantity hierarchical models already need.**
 Partial pooling estimates a shrinkage weight from the group-level variance τ² — but
