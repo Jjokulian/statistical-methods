@@ -83,11 +83,37 @@ exactly that missing number:
 > A basket of `n` members whose boundary reproduces at agreement `m` across disjoint
 > halves of the feature space is worth about **`m·n` pseudo-observations, not `n`**.
 
-At the best figure the origin project reached (m ≈ 0.46), a four-station basket is
-worth under two observations. At m ≈ 0 it is worth none, and the honest prior is the
-flat one. This is Laplace's rule of succession in structure — a correction for not
-having seen everything — with the correction estimated rather than set to +1/+2 by
-convention.
+At m ≈ 0 a basket is worth nothing and the honest prior is the flat one. This is
+Laplace's rule of succession in structure — a correction for not having seen
+everything — with the correction estimated rather than set to +1/+2 by convention.
+
+**Measured, on the origin project's 150 fully-observed stations:**
+
+| features per half | agreement `m` | κ | a 4-member basket is worth |
+|---|---|---|---|
+| 1 | 0.238 | 3.9 | 0.95 observations |
+| 2 | 0.333 | 22.4 | 1.33 |
+| 3 | 0.359 | 30.3 | 1.44 |
+| 4 | **0.462** | 17.8 | **1.85** |
+
+So at the friendliest setting available, four stations pooled are worth **fewer than
+two observations**, and the boundary is doing under half the work its use assumes.
+
+Two honesty notes on that table, because they are the kind of thing this document
+exists to make people report:
+
+- **κ is not monotone**, and the dip at four is not a finding about the water. Nine
+  variables admit few disjoint 4–4 splits, so those draws share composition and the
+  spread widens. κ measures how well `m` is pinned, and it is pinned worst where the
+  draws are fewest — as at one feature per half, where κ = 3.9 and a single draw ran
+  from −0.027 to +0.737 depending only on **which** variable was picked.
+- **The official partition's own worth is not reported here, deliberately.** It scores
+  0.117 against the derivations, which over its mean 1.79 stations per body would give
+  0.21 pseudo-observations — a devastating number that is **not yet earned**. That ARI
+  compares 84 official groups against 12 derived ones, and ARI is depressed by
+  granularity mismatch alone. Converting a confounded agreement into a pseudo-count
+  would be laundering it. The matched-granularity rerun is owed before that number is
+  published.
 
 **And it is the non-circular route to a quantity hierarchical models already need.**
 Partial pooling estimates a shrinkage weight from the group-level variance τ² — but
