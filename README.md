@@ -61,6 +61,66 @@ recursively. The level of maximal stability is itself the finding.
 
 ---
 
+## 2b. There is no result, and there cannot be
+
+Everything below is a **procedure**, not a test with an outcome. That distinction is
+not modesty; it is structural, and getting it wrong is the most available error here —
+the author made it in the session that produced this document, after building the whole
+apparatus that forbids it.
+
+**A "result" is constituted by closure.** It is the selection of one state from an
+enumerated space; that is what makes a result a result. Entity-identity ranges over the
+combinatorial space of boundary-stable groupings. Basket-utility ranges over
+functionals, which is unbounded and not enumerable. And a new measure-space does not
+*select* among existing possibilities — it **creates** states that were not previously
+possibilities at all.
+
+So the condition that makes one meaningful is the negation of the condition defining
+the other. This is not a mismatch between neighbouring kinds. It is an inversion:
+
+| | direction |
+|---|---|
+| a result | **reduces** possibility space to a point |
+| this procedure | **generates** possibility space |
+
+To say "the result is in" is to assert contraction of something whose mode of being is
+expansion. Which places the error inside §4 rather than beside it:
+
+> **"The result is in" is the mean, applied to the discovery process itself.**
+
+A collapse of an open space to a point — the banned operation, one level up from
+numbers — and banned for the same reason. It presupposes the states are one kind,
+enumerable and commensurable, which is exactly the applefication that openness refuses.
+
+**The machinery says so everywhere, once you look:**
+
+- `m(t)` carries a time index because each new measure-space is another trial. **A
+  quantity with a time index has no final value.**
+- The residual test asks for *the sequence* — the leftover in each published version —
+  and explicitly not for the current number.
+- "At which level of organisation does grouping become stable" has no terminating
+  answer; the level is the finding, and the next instrument can move it.
+- Basket-utility is per-functional and never transfers, so there is no aggregate over
+  functionals that could be "in."
+
+### What this procedure can and cannot emit
+
+**Not a possible output:** *"X is a real category."* *"X is not a real category."*
+Any sentence of that form is not false — it has no referent, because the procedure has
+no such output slot.
+
+**A possible output:** a stability coefficient, at a stated level of organisation,
+against a stated null, for a named functional, at a stated point in the accumulation
+of measure-spaces. Five qualifiers, none droppable. Drop them and you have produced a
+verdict, which is a different kind of object than anything this can make.
+
+**And the failure has a recognisable shape.** A claim of this form wears the grammar of
+a finding while carrying no run, no null and no number — so it cannot be checked, which
+is worse than being wrong. Citations make it worse still: they make an uncomputed claim
+look sourced, especially when the cited work used methods §8 marks void. That is the
+exact move this document exists to catch, performed in prose, where nothing fails
+loudly.
+
 ## 3. Two stabilities, two products
 
 The same resampling yields two different things depending on **what you vary**, and
