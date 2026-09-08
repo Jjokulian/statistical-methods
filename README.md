@@ -291,6 +291,51 @@ agreeing with itself.
 
 ---
 
+## 7b. Rate a data stream by the errors it can contain
+
+Not all errors are the same kind, and the useful ordering is **recoverability** — what
+can be undone downstream, which the Data Processing Inequality settles absolutely: no
+processing recovers what a channel discarded.
+
+| class | error | recoverable? | detectable from within? |
+|---|---|---|---|
+| **1. value error** | drift, calibration offset, fouling, noise | **yes** — reference, duplicate, or cross-sensor redundancy | yes, by replication |
+| **2. quantisation** | rounding, coarse units, `<0.5` censoring | no, but **boundable** — the fiber is uniform and stated | yes |
+| **3. aggregation** | depth to two bins, time to month, cast to station | no, but **countable** — you know what was collapsed | yes |
+| **4. schema conflation** | one column pooling incommensurables | no, and **not boundable** — the distinguishing field was never recorded | only from outside |
+| **5. unfilled field** | column exists, holds a constant or blank | no — but it **names its own gap** | trivially |
+| **6. absent dimension** | no column at all | no, not boundable, **not countable** | **no** |
+| **7. model-as-datum** | a modelled value in a column shaped like a measured one | no — and it **propagates as confidence** | no |
+
+**Classes 1–6 subtract. Class 7 adds.** Every other class destroys information and
+should make you less certain. Model-as-datum manufactures apparent information and
+makes downstream estimates *more* confident — the only class whose error travels
+forward with a narrower interval than it deserves. It is precision-without-
+identification, created at source.
+
+**Class 5 beats class 4, which is counterintuitive and worth internalising.** An empty
+column is honest about its emptiness: `SondeNavn = Unknown` on 83% of rows states
+exactly what is missing, and you can count it. A column named `Oxygen indhold` pooling
+Winkler titration, Clark electrode and optode readings states nothing, because the
+field that would distinguish them was never created. **A gap you can name is worth more
+than a conflation you cannot see.**
+
+**Worked, on the origin project's streams:**
+
+| stream | classes present |
+|---|---|
+| CTD sensor values | 1, 2 |
+| CTD as the archive records it | + **4** (parameter pooling), **5** (instrument, sampler), **6** (no time of day) |
+| this project's own derived products | + **3**, at 3,900:1 |
+| the water body column | **7** |
+| the headline 69.6% attribution | **7**, with 51% of area modelled |
+
+The sensors carry the benign class. Everything expensive happened at the keyboard —
+which is why "better instruments" is the wrong ask and "fill in the field" is the right
+one.
+
+---
+
 ## 8. The methods, and whether they survive their own audit
 
 | # | method | status |
