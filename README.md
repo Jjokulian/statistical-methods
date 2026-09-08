@@ -382,6 +382,32 @@ independently of any one question.
 shape-matched null and accept that it cannot separate the entities from the
 instrument. Above that, split the feature space, because you can.
 
+### 4b. Complement agreement — the scalable form
+
+Feature-subspace stability as first written compares a subset against a *disjoint
+equal-sized* subset. Two problems, both raised against this document rather than by
+it:
+
+- **An arbitrary other subset may itself be a garbage basketing**, so agreeing with it
+  establishes nothing. Compare against the **complement** — every dimension left out,
+  pooled — which is the strongest alternative the data can supply.
+- **A mean over subsets lets bad baskets vote.** If random $k$-combinations mostly
+  fail to produce good baskets, the mean measures what bad baskets have in common and
+  still reads as agreement. Report the **distribution**.
+
+Measured against the permutation control, the distributions do not overlap: the worst
+real subset beats the best permuted one at every size (min +0.369 vs max +0.152 at
+$k{=}1$; +0.472 vs +0.244 at $k{=}4$). On this data random combinations *do* produce
+baskets that explain their complements, so the averaging that follows is licensed —
+conditionally, and the condition is testable.
+
+**And it is the part that scales.** Each test costs exactly two clusterings, so the
+cost is linear in draws and independent of the size of the combinatorial space.
+Anything that weighs subsets against each other needs the whole space and is
+$O(2^{V})$ — fine at $V{=}9$, impossible at $V{=}50$. Four draws per size reproduce
+the exhaustive medians to within 0.07 here. This is the form to carry into a large
+feature space; the enumeration was a convenience, not the method.
+
 ### 5. The same move, applied to a number
 
 A residual — `Total − Σ(known parts)` — cannot be checked against an independent

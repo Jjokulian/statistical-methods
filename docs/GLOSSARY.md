@@ -356,6 +356,52 @@ finding.
 
 ---
 
+## 13. Complement agreement
+
+$$q(F) = \mathrm{ARI}\big(P_F,\ P_{\bar F}\big), \qquad \bar F = \text{every dimension not in } F$$
+
+Cluster on a feature subset $F$; cluster again on **all** the dimensions it left out;
+compare the two partitions. `methods/partition_complement.py`.
+
+**Why the complement and not another subset of the same size.** An arbitrary other
+$k$-subset may itself produce a garbage basketing, so agreeing with it establishes
+nothing. The complement pools every dimension not used, and is therefore the strongest
+alternative available from the data.
+
+**Why the distribution and not the mean.** A mean over subsets lets bad baskets vote:
+if random $k$-combinations mostly fail to produce good baskets, the mean measures what
+bad baskets have in common and still looks like agreement. So $q(F)$ is reported as
+quartiles and extremes, against the same quantity computed under the §12 permutation.
+
+| $k$ | real median | real **min** | permuted **max** | subsets qualifying |
+|---|---|---|---|---|
+| 1 | +0.512 | +0.369 | +0.152 | 9 / 9 |
+| 2 | +0.606 | +0.370 | +0.175 | 36 / 36 |
+| 3 | +0.668 | +0.472 | +0.222 | 84 / 84 |
+| 4 | +0.689 | +0.472 | +0.244 | 126 / 126 |
+
+The distributions do not overlap: the **worst** real subset beats the **best**
+permuted one at every size.
+
+> ### It is the part that scales
+>
+> Each test costs exactly **two clusterings** — the subset and its complement — so
+> cost is linear in the number of draws and **independent of the size of the
+> combinatorial space**. Anything that weighs subsets against one another needs the
+> whole space to mean anything, and is therefore $O(2^{V})$: at $V=9$ that is 510
+> subsets and affordable, at $V=50$ it never will be. Sampling costs little — 4 draws
+> per size reproduce the exhaustive medians to within 0.07 here — because the
+> distribution is the answer and a sample estimates a distribution.
+>
+> This is why weighted consensus over subsets was built and then dropped: it is
+> $O(2^{V})$ for a number the complement comparison already provides.
+
+**Does not license:** ranking dimensions by how often they appear in high-$q$ subsets
+without a null for that count. `oxy_bed` appears in the best subset at three of four
+sizes here; that is a lead, not a result.
+
+---
+
 ## Standing rule
 
 A quantity computed and not entered here is a quantity that has not been checked.
