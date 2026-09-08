@@ -107,13 +107,27 @@ exists to make people report:
   spread widens. κ measures how well `m` is pinned, and it is pinned worst where the
   draws are fewest — as at one feature per half, where κ = 3.9 and a single draw ran
   from −0.027 to +0.737 depending only on **which** variable was picked.
-- **The official partition's own worth is not reported here, deliberately.** It scores
-  0.117 against the derivations, which over its mean 1.79 stations per body would give
-  0.21 pseudo-observations — a devastating number that is **not yet earned**. That ARI
-  compares 84 official groups against 12 derived ones, and ARI is depressed by
-  granularity mismatch alone. Converting a confounded agreement into a pseudo-count
-  would be laundering it. The matched-granularity rerun is owed before that number is
-  published.
+- **The official partition's worth was withheld here, and the rerun reversed it.** At
+  mismatched granularity it scored 0.117 against the derivations, which over its mean
+  1.79 stations per body would have given **0.21 pseudo-observations** — a devastating
+  figure, and a false one. Rerun with both sides at 84 groups:
+
+  | features per half | derived-vs-derived | derived-vs-**official** |
+  |---|---|---|
+  | 1 | 0.309 | 0.313 |
+  | 2 | 0.424 | 0.414 |
+  | 3 | 0.471 | 0.398 |
+  | 4 | **0.576** | **0.436** |
+
+  The official water bodies track independent derivations nearly as closely as the
+  derivations track each other — **76% of the achievable agreement** (0.436 / 0.576),
+  and at one feature per half they match it exactly. `m = 0.436` puts a 1.79-station
+  body at **0.78 pseudo-observations**, not 0.21.
+
+  **This is evidence for the drawn boundaries**, and it is the opposite of what the
+  audit expected to find. It exists only because the confounded number was refused:
+  0.21 would have been quoted, would have been wrong by a factor of four, and would
+  have been wrong in the direction the author was already inclined to believe.
 
 **And it is the non-circular route to a quantity hierarchical models already need.**
 Partial pooling estimates a shrinkage weight from the group-level variance τ² — but

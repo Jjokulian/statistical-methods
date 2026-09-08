@@ -53,6 +53,30 @@ Computed in `methods/partition_score.py`, `icc()`; identically in
 **Does not license:** any claim about an individual station, and any comparison
 across variables measured on different scales without the null run alongside.
 
+> ### Open: the shuffled control does not sit at its null
+>
+> On real data the label-shuffled control reaches $\rho^{*}=0.859$ for surface oxygen
+> saturation and 0.782, 0.658, 0.639 for other variables — far above the simulated
+> null of 0.5, for a partition with **no** geographic content. Four candidate
+> explanations have been ruled out by simulation, each returning $0.49$–$0.51$:
+>
+> | tested | result |
+> |---|---|
+> | group count, 2 → 120 groups over 150 stations | 0.459 – 0.504 |
+> | unequal group sizes matched to the official shape | 0.487 |
+> | persistent per-station offsets, $\sigma_\mu/\sigma_e$ up to 4 | 0.469 – 0.513 |
+> | missing months, 100% / 50% / 20% observed | no effect |
+>
+> The construction is a genuine permutation (`shuf = real[:]; rng.shuffle(shuf)`), so
+> this is not a broken control. **It is unexplained.** The untested cell is the real
+> combination — ~119 groups, sizes 1 to 64, at the full station count — which the
+> skew simulation could not reach.
+>
+> **What it does and does not touch.** Published lifts are differences against the
+> **compact** null, not against 0.5, so they are unaffected. What is affected is any
+> reading of a raw $\rho^{*}$, and any use of the shuffled control as a reference —
+> which is a further reason the compact null is the one that is used.
+
 ---
 
 ## 2. Lift over a shape-matched null
