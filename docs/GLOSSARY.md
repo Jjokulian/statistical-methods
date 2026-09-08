@@ -306,6 +306,56 @@ changes with both — it is 0.337 at 150 stations and 0.048 at 25.
 
 ---
 
+## 11. Held-out dimension lift
+
+Cluster on a feature subset $F$, then score that partition on a variable it never saw:
+
+$$\mathrm{lift}_{\text{held}}(P_F, v) = \rho^{*}(P_F, v) - \underset{a}{\mathrm{mean}}\ \rho^{*}(N_a, v), \qquad v \notin F$$
+
+averaged over all subsets of each size and all held-out $v$.
+`methods/partition_subspace.py`.
+
+**Why this is the load-bearing column.** Agreement between two derived partitions is
+stability of the *derivation*, bounded above by how concentrated the space of
+derivable partitions is: a procedure rigid enough to map any feature subset onto the
+same partition scores well on it while ignoring the data. Held-out lift is a
+train/test split **in feature space**, and no such procedure can pass it. Measured
++0.084 → +0.133 rising with $|F|$; on permuted data +0.002 → +0.004.
+
+**Does not license:** reading it as effect size. It is a difference of mean-square
+ratios, on a statistic whose own null is 0.5 (§1).
+
+---
+
+## 12. Permutation (procedural) null
+
+Shuffle each variable's values **across stations within month**. Month effects,
+marginal distributions, station counts, the neighbour graph, the granularity and the
+clustering procedure are all preserved exactly; only the tie between a station and
+its values is cut. Rerun the identical enumeration.
+
+**This is the floor for anything the procedure produces**, and it is not
+interchangeable with §10:
+
+| quantity | correct floor | wrong floor gives |
+|---|---|---|
+| derived-vs-derived | permuted run, **0.12** | contiguous null 0.368 → understates lift by ~0.25 |
+| derived-vs-**official** | contiguous null 0.368 | — (official is a fixed contiguous partition) |
+
+Permuted derivations agree *less* than random connected partitions because average
+linkage on noise chains into unbalanced groups rather than size-matched blobs. Two
+constraints, two different reference classes, and using either for the other is wrong
+in a direction you cannot guess in advance — here it was biased **against** the
+finding.
+
+> **It also confirms §1 empirically.** On permuted data the contiguous nulls score
+> $\rho^{*} = 0.47$–$0.51$ — the simulated chance value of 0.5, now measured on real
+> station geometry rather than synthetic noise. On unpermuted data the same nulls
+> score 0.69–0.72, because spatially compact groups of real stations genuinely are
+> more alike.
+
+---
+
 ## Standing rule
 
 A quantity computed and not entered here is a quantity that has not been checked.

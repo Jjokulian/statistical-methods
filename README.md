@@ -139,16 +139,38 @@ exists to make people report:
   what two random **connected** partitions of matched sizes already agree on
   (ARI 0.337 — half of any raw figure here):
 
-  | features per half | derived-vs-derived lift | derived-vs-official lift |
-  |---|---|---|
-  | 1 | +0.002 | −0.005 |
-  | 2 | +0.161 | +0.018 |
-  | 3 | +0.277 | +0.019 |
-  | 4 | **+0.355** | **−0.002** |
+  Exhaustively — every distinct feature subset clustered once, then compared against
+  **every** disjoint subset (36, 378, 840 and 315 pairs, not a 1.4% sample), and
+  scored on the dimensions it never saw. The right floor for a *derived* partition is
+  not the contiguous null but the same procedure run on **permuted** data — values
+  shuffled across stations within month, so month effects, marginals, graph,
+  granularity and procedure are all preserved and only the station-to-value tie is
+  cut:
 
-  The derivations converge strongly on something the measurements share. **The
-  official partition adds nothing detectable beyond being a connected map of that
-  size distribution.** Its earlier 0.436 was real against a null of arbitrary
+  | k | d-v-d | d-v-d permuted | lift | **held-out** | held-out permuted | official |
+  |---|---|---|---|---|---|---|
+  | 1 | 0.417 | 0.118 | +0.299 | **+0.084** | +0.002 | −0.026 |
+  | 2 | 0.516 | 0.117 | +0.399 | **+0.111** | +0.003 | −0.014 |
+  | 3 | 0.591 | 0.126 | +0.465 | **+0.126** | +0.002 | −0.021 |
+  | 4 | 0.657 | 0.126 | **+0.531** | **+0.133** | +0.004 | −0.024 |
+
+  **`held-out` is the test that cannot be gamed by a rigid procedure**: cluster on `k`
+  dimensions, then score that partition on each of the `9−k` it never used. Real
+  +0.084 rising to +0.133; permuted +0.002 to +0.004. The baskets carry information
+  about dimensions they were not built from.
+
+  **And the contiguous null was the wrong floor here** — a fourth instance of the
+  same error, this time biased *against* the finding. Permuted derivations agree at
+  0.12, *below* the 0.368 that random connected partitions reach, because average
+  linkage on noise chains into unbalanced groups rather than matched blobs. Reported
+  against the contiguous null the lifts read +0.049 to +0.289; against the procedure's
+  own floor they are +0.299 to +0.531. A fixed contiguous partition (the official one)
+  is still correctly scored against the contiguous null; a *derived* one is not.
+
+  The derivations converge strongly on something the measurements share, and it is
+  real rather than procedural. **The official partition adds nothing detectable
+  beyond being a connected map of that size distribution** — −0.026 to −0.014 across
+  all 255 subsets. Its earlier 0.436 was real against a null of arbitrary
   partitions, and is fully accounted for by contiguity against the null that holds
   shape constant.
 
