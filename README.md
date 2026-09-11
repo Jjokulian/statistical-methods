@@ -88,8 +88,8 @@ expansion. Which places the error inside §4 rather than beside it:
 
 > **"The result is in" is the mean, applied to the discovery process itself.**
 
-A collapse of an open space to a point — the banned operation, one level up from
-numbers — and banned for the same reason. It presupposes the states are one kind,
+A collapse of an open space to a point — the information drop of §4, one level up
+from numbers — and suspect for the same reason. It presupposes the states are one kind,
 enumerable and commensurable, which is exactly the applefication that openness refuses.
 
 **The machinery says so everywhere, once you look:**
@@ -172,30 +172,48 @@ means that functional does not live on it.
 
 ---
 
-## 4. The ban
+## 4. What an aggregate drops
 
-> **The mean is the applefication assumption in operational form.**
+> **An aggregate is information nullification and model introduction.**
 
-You can only average what you have already decided are instances of one kind. Every
-mean silently asserts exactly the thing that was supposed to be under test. So it is
-banned here — and the honest consequence is that **most of statistics goes with it.**
+The mean is the applefication assumption in operational form: you can only average
+what you have already decided are instances of one kind. It keeps one number and
+discards everything that told the members apart, so what it shows is what the pooling
+rule decided mattered. The more the members differ, the more of the result is the rule
+and the less is the data — a heavily aggregated dataset is almost exclusively a bias of
+the model that pooled it.
 
-Reduce to primitives and check:
+That makes an aggregate a trade, not a crime. An earlier version of this section banned
+the mean outright; that overstated it. The trouble is not that the operation exists but
+that it is used as the main view of a dataset, and that the conclusions drawn from it
+are most often not justified by it. So an aggregate may be computed, on four conditions:
 
-| statistic | primitives | verdict |
+1. **It states its applefication** (§1): what it pooled as one kind, over which window,
+   with which weights.
+2. **It reports what it dropped**: the share of the variation it discards — spread
+   within the pooled members against spread between them — and how stable the grouping
+   is (§2). That says how much of the aggregate is data and how much is the pooling rule.
+3. **It never stands alone.** The distribution it summarises comes first; the aggregate
+   sits beside it (§5).
+4. **Its conclusions are checked, not inherited**: against the distribution underneath,
+   within the groups as well as across them, and at the scale they are applied to.
+
+Reduce to primitives to see what each statistic presumes:
+
+| statistic | primitives | what it presumes |
 |---|---|---|
-| mean, variance, standard deviation | sums of magnitudes ÷ count | **void** |
-| Pearson correlation | means of x and y, centred products | **void** |
-| intraclass correlation, ICC, F<sub>ST</sub>, ρ\* | group means, grand mean, ratio of averages | **void**, at three levels |
-| **average** linkage | mean of cross-cluster distances | **void by its own name** |
-| adjusted Rand index | pair counts — but its expectation is an ensemble mean and its normaliser is ½(P<sub>A</sub>+P<sub>B</sub>) | **void** |
-| regression coefficients, R², t, F, ANOVA | least squares, i.e. distance from a mean | **void** |
+| mean, variance, standard deviation | sums of magnitudes ÷ count | the members' magnitudes are commensurable |
+| Pearson correlation | means of x and y, centred products | the same, for two series at once |
+| intraclass correlation, ICC, F<sub>ST</sub>, ρ\* | group means, grand mean, ratio of averages | the same, at three levels |
+| **average** linkage | mean of cross-cluster distances | the same, across clusters — by its own name |
+| adjusted Rand index | pair counts — but its expectation is an ensemble mean and its normaliser is ½(P<sub>A</sub>+P<sub>B</sub>) | an ensemble of partitions commensurable with this one |
+| regression coefficients, R², t, F, ANOVA | least squares, i.e. distance from a mean | a mean, and a functional form around it |
 | — | | |
-| counts | counting | **survives** |
-| median, quantiles, min, max, range | order statistics | **survives** |
-| Kendall's τ, Spearman, rank tests | concordant vs discordant pairs | **survives** — purely ordinal, no centring |
-| single / complete linkage | min, max | **survives** |
-| the empirical distribution itself | the data, undigested | **survives** |
+| counts | counting | only that events can be told apart |
+| median, quantiles, min, max, range | order statistics | only an order |
+| Kendall's τ, Spearman, rank tests | concordant vs discordant pairs | only an order of pairs — purely ordinal, no centring |
+| single / complete linkage | min, max | only an order |
+| the empirical distribution itself | the data, undigested | nothing it does not show |
 
 **One line of honesty.** A proportion is a mean of indicators, so it is not strictly
 innocent. The defensible cut: **counting presumes only that you can tell events apart;
@@ -203,9 +221,9 @@ averaging magnitudes presumes they are commensurable**, which is the appleficati
 assumption proper. Proportions are kept here, with the raw counts printed beside them
 so a stricter reader can refuse them.
 
-### What replaces what
+### What keeps more of the data
 
-| banned | replacement | why it survives |
+| aggregate | what keeps more of it | why |
 |---|---|---|
 | Pearson r between two series | **Kendall's τ** | counts concordant vs discordant *pairs of observations*; no centre, no magnitude |
 | average linkage | **complete linkage** | the max is an order statistic |
@@ -218,7 +236,8 @@ so a stricter reader can refuse them.
 ## 5. Do not collapse
 
 A single number is a claim that everything it summarises was one kind of thing. So the
-report is the **distribution**, and the ban is what forces this rather than taste.
+report is the **distribution**, and §4's account of what a summary drops is what makes
+this more than taste.
 
 Worked, on 150 marine stations and every feature subset of size 1–4, each compared
 against the basketing built from **every dimension it left out**:
@@ -340,15 +359,15 @@ one.
 
 | # | method | status |
 |---|---|---|
-| 1 | variance decomposition (ICC / ρ\*) | **void** — means at three levels. Kept only as the thing to explain to people who quote it |
+| 1 | variance decomposition (ICC / ρ\*) | **conditional** — means at three levels, so it carries §4's four conditions. Kept mainly as the thing to explain to people who quote it |
 | 2 | shape-matched nulls | **the idea survives** (reference class), the statistic it corrected does not |
-| 3 | floor and ceiling bracketing | **void** — built on ρ\* |
-| 4 | feature-subspace stability | **rebuildable** — ARI is void, per-pair co-membership counts are not |
+| 3 | floor and ceiling bracketing | **conditional** — built on ρ\*, and inherits its conditions |
+| 4 | feature-subspace stability | **rebuildable** — ARI collapses the pairs to one number, per-pair co-membership counts keep them |
 | 5 | complement agreement | **rebuildable**, and the one to carry forward: right comparison, scales, distribution-native |
 | 6 | residual growth, `R_new = R_old − P` | **survives** — arithmetic on totals, no mean anywhere |
 | 7 | threshold critique | not a statistic; survives |
 
-Only two survive intact. That is the honest yield, and it is the point rather than an
+Only two need no conditions at all. That is the honest yield, and it is the point rather than an
 embarrassment: **a method that cannot state its applefication assumption should not
 have been trusted, including when it was ours.**
 
@@ -396,8 +415,8 @@ error on its first pass.
 
 Borrowed and not claimed: Frege on sortals, Quine on identity, the Beta prior's
 pseudo-count reading, Kendall's τ, the adjusted Rand index. Claimed: the inversion in
-§2, the entity-identity / basket-utility split in §3, the ban in §4 and its
-consequences, and the complement form in §6.
+§2, the entity-identity / basket-utility split in §3, the account of what an aggregate
+drops in §4, and the complement form in §6.
 
 Origin: [copenhagen-waterways](https://github.com/Jjokulian/copenhagen-waterways),
 where each method has a worked example with real numbers and the mistakes that
