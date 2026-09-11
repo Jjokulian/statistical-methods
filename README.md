@@ -413,6 +413,9 @@ null value and what it does **not** license: **[`docs/GLOSSARY.md`](docs/GLOSSAR
 No number appears in this project without an entry there. That rule caught the ρ\*
 error on its first pass.
 
+Relations offered to a neural network as node functions, each with where it has
+predicted well: **[`relations/`](relations/README.md)**.
+
 Borrowed and not claimed: Frege on sortals, Quine on identity, the Beta prior's
 pseudo-count reading, Kendall's τ, the adjusted Rand index. Claimed: the inversion in
 §2, the entity-identity / basket-utility split in §3, the account of what an aggregate
