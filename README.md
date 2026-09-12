@@ -286,6 +286,49 @@ enumeration was a convenience, not the method.**
 
 ---
 
+## 6b. A grouping claims a shared cause
+
+Grouping stations, people or firms says their members belong together, and the honest
+question is *for what reason*. Many groupings have one that is not a finding at all:
+management. The 123 Danish water bodies exist so that someone can be made responsible
+for an area and given a target. That is a purpose, and a legitimate one. It is not
+something the data discovered, and a number computed per management unit is a number
+about the administration until shown otherwise.
+
+**Beating random groups is not that showing.** The usual test compares the grouping
+with random baskets of the same sizes and shapes, the rule of §7 applied faithfully.
+But in a world of many causes a random basket shares no cause: its members are noise
+with respect to each other. The random baskets that score well are those that happen
+to hold similar values from unrelated causes, so the comparison rewards coincidence -
+overfitting by design. Beating it shows the grouping is better than noise, which
+almost any grouping with spatial structure is. It says nothing about whether members
+share a cause.
+
+**Similar levels are not a shared cause; moving together is.** Two stations can sit at
+the same oxygen level for unrelated reasons. Members that share water, or a driver,
+move together. Remove each member's own seasonal cycle and ask whether the remainders
+rise and fall together, and whether events - a depletion episode, a bloom - happen in
+the same weeks. The null keeps every member's own series intact and breaks only the
+tie in time: shift one series by whole years and see how much co-movement survives.
+Whatever exceeds that is shared behaviour.
+
+**Distance is its own axis**, and it separates what co-movement means:
+
+| | move together | do not |
+|---|---|---|
+| **near** | same water, same ailment - a grouping worth naming | a boundary between processes, whether or not a map draws one |
+| **far** | a shared driver, or parallel ailments with separate causes - real, but not a place | independent, as expected |
+
+**And a boundary is tested at matched distance.** Whether a line on a map means
+anything is one comparison: at the same distance apart, do members on the same side
+move together more than members on opposite sides? If not, the line adds nothing to
+distance for that variable; it is administration, and should be reported as such. The
+groups the data supports are read from co-movement itself - pairs that move together
+beyond the shifted null, joined - and the map's lines are compared with them, not the
+other way round.
+
+---
+
 ## 7. Your null is not the null
 
 A statistic's nominal null is the null of the model it was derived under, not of the
@@ -307,6 +350,10 @@ way** — same sizes, same shapes, same connectivity, same procedure. The strong
 is to permute the data itself and rerun everything: cut the tie between an entity and
 its values, keep every other structure exactly, and whatever survives is the procedure
 agreeing with itself.
+
+A null constrained this way makes the comparison fair, and it can still only ask
+whether a grouping beats noise. Random groups of the same shape share no cause, so
+beating them is a floor. Whether members share a cause is §6b's test, not this one.
 
 ---
 
@@ -360,7 +407,7 @@ one.
 | # | method | status |
 |---|---|---|
 | 1 | variance decomposition (ICC / ρ\*) | **conditional** — means at three levels, so it carries §4's four conditions. Kept mainly as the thing to explain to people who quote it |
-| 2 | shape-matched nulls | **the idea survives** (reference class), the statistic it corrected does not |
+| 2 | shape-matched nulls | **a floor, not a test** — beating random groups of the same shape shows a grouping beats noise, not that its members share a cause (§6b); the statistic it corrected does not survive either |
 | 3 | floor and ceiling bracketing | **conditional** — built on ρ\*, and inherits its conditions |
 | 4 | feature-subspace stability | **rebuildable** — ARI collapses the pairs to one number, per-pair co-membership counts keep them |
 | 5 | complement agreement | **rebuildable**, and the one to carry forward: right comparison, scales, distribution-native |
