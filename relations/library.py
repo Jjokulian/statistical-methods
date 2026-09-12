@@ -41,7 +41,7 @@ def _exp(z, xp):
 
 def _pos(z, xp):
     """A smooth positive version of z (softplus), for anything a form needs > 0."""
-    return xp.maximum(z, 0) + xp.log1p(_exp(-xp.abs(z), xp))
+    return xp.clip(z, 0, None) + xp.log1p(_exp(-xp.abs(z), xp))    # clip, not maximum: torch takes no plain number there
 
 
 @dataclass
