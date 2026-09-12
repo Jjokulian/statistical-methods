@@ -304,6 +304,21 @@ overfitting by design. Beating it shows the grouping is better than noise, which
 almost any grouping with spatial structure is. It says nothing about whether members
 share a cause.
 
+Random baskets keep two honest uses. **As total noise:** the official grouping must
+beat noise baskets by a wide margin; if it does not perform *much* better, read it as
+line-drawing with no cause behind it. **As an estimator of the ubiquitous:** whatever
+stays stable across every random basket is common to the whole population - a national
+signal, not a property of any place in it. What they cannot be is a search space:
+hunting through random baskets for good ones finds coincidences and overfits.
+
+**The comparison that tests a grouping draws baskets along causal lines.** Set the
+official lines against other reasonable lines through the same reality: the official
+water bodies against other contiguous partitions of the same water - by enclosure,
+by sill, by exchange - or baskets drawn by a driver, such as stations grouped by the
+livestock that drains to them. The last gives a naive, immediate estimate of that
+driver's effect: where the driver is nearly absent and where it is heavy, compared on
+the same measurements.
+
 **Similar levels are not a shared cause; moving together is.** Two stations can sit at
 the same oxygen level for unrelated reasons. Members that share water, or a driver,
 move together. Remove each member's own seasonal cycle and ask whether the remainders
