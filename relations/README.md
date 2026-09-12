@@ -67,12 +67,31 @@ exponents, positive denominators), so training can try them without breaking.
 And ordinary units train more easily than exotic ones, so a relation may need a head
 start - initial weight, or a lower penalty - to be tried where it fits.
 
+## Laws with measured constants
+
+[`laws.py`](laws.py) holds the second tier. A law differs from a form twice over:
+its constants were fixed by measurement and belong to the law, and its inputs are
+physical quantities in stated units. So a law node is wired to the record columns
+that carry those quantities, not to learned combinations, and nothing in it is
+learnable. Every law calls the reference implementation of TEOS-10, the Gibbs
+SeaWater toolbox (`gsw`); no constant is retyped, and each entry repeats what that
+implementation says about its own limits.
+
+Present: sea pressure from depth, Absolute Salinity, Conservative Temperature,
+in-situ density, surface potential density, oxygen solubility (Garcia and Gordon's
+fit), and buoyancy frequency, which needs a whole cast and so is marked as not
+per-record. `record_state()` chains the per-record laws from what one CTD record
+carries. Running `laws.py` checks physical invariants on a grid, such as density
+rising with salinity and solubility falling with temperature, not reference values.
+
+It needs `gsw` (`pip install -r relations/requirements.txt`); `library.py` needs
+numpy only.
+
 ## Not yet here
 
-- **Laws with measured constants** - seawater density (TEOS-10), oxygen solubility,
-  gas transfer across the surface. Their constants are part of the law, so they come
-  from the reference implementations (TEOS-10's `gsw`) or from pinned sources, not
-  from memory.
+- **More laws with measured constants** - gas transfer across the surface, light
+  and day length from the sun's position - each from a reference implementation or
+  a pinned source.
 - **Operators across records** - cumulative sums, moving averages, lags: relations
   in time, such as degree-days or antecedent rainfall, that need a sequence rather
   than one record.
