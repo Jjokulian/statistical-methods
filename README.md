@@ -311,6 +311,18 @@ stays stable across every random basket is common to the whole population - a na
 signal, not a property of any place in it. What they cannot be is a search space:
 hunting through random baskets for good ones finds coincidences and overfits.
 
+**Failing to beat them has two readings, and the data can choose between them.** The
+grouping may be bad. Or the population may have no better grouping, because its
+members are alike - every basket shares the same ubiquitous signal. Then random
+membership is as good as any, and treating the members as one kind is justified: with
+no causal line to draw baskets along, they might as well be the same apples in the
+count. That is a licence for applefication, earned rather than assumed. The two
+readings differ in one number: the spread among members, set against the spread of
+repeat measurements of one member. If it is no larger, the members are
+interchangeable and an aggregate drops nothing that matters. If it is larger and no
+causal line accounts for it, the population is not uniform but unexplained, and the
+aggregate still drops what nobody has yet explained.
+
 **The comparison that tests a grouping draws baskets along causal lines.** Set the
 official lines against other reasonable lines through the same reality: the official
 water bodies against other contiguous partitions of the same water - by enclosure,
